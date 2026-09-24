@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.techlads.screen_curfew.ui.components.AppBottomBar
 import com.techlads.screen_curfew.ui.home.HomeScreen
 import com.techlads.screen_curfew.ui.navigation.AppDestination
+import com.techlads.screen_curfew.ui.schedules.SchedulesScreen
 import com.techlads.screen_curfew.ui.theme.ScreenCurfewTheme
 
 @Composable
@@ -44,10 +45,7 @@ fun MainScreen(
         ) {
             when (selected) {
                 AppDestination.Tonight -> HomeScreen()
-                AppDestination.Schedules -> PlaceholderTab(
-                    title = "Schedules",
-                    body = "Weekday and weekend profiles. One tap to pause.",
-                )
+                AppDestination.Schedules -> SchedulesScreen()
                 AppDestination.Insights -> PlaceholderTab(
                     title = "Insights",
                     body = "Progress without shame — streak, adherence, and calm trends.",

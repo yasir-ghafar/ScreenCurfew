@@ -7,6 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.techlads.screen_curfew.ui.main.MainScreen
+import com.techlads.screen_curfew.ui.navigation.AppDestination
 import com.techlads.screen_curfew.ui.onboarding.OnboardingScreen
 import com.techlads.screen_curfew.ui.theme.ScreenCurfewTheme
 
@@ -22,7 +23,7 @@ fun App() {
                 onAlreadyHaveAccount = { showOnboarding = false },
             )
         } else {
-            MainScreen()
+            MainScreen(initialDestination = AppDestination.Schedules)
         }
     }
 }
