@@ -26,13 +26,13 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.techlads.screen_curfew.ui.navigation.AppDestination
+import com.techlads.screen_curfew.ui.navigation.BottomTab
 import com.techlads.screen_curfew.ui.theme.ScreenCurfewTheme
 
 @Composable
 fun AppBottomBar(
-    selected: AppDestination,
-    onSelect: (AppDestination) -> Unit,
+    selected: BottomTab,
+    onSelect: (BottomTab) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -55,11 +55,11 @@ fun AppBottomBar(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            AppDestination.entries.forEach { destination ->
+            BottomTab.entries.forEach { tab ->
                 BottomBarItem(
-                    destination = destination,
-                    selected = destination == selected,
-                    onClick = { onSelect(destination) },
+                    tab = tab,
+                    selected = tab == selected,
+                    onClick = { onSelect(tab) },
                     modifier = Modifier.weight(1f),
                 )
             }
@@ -69,7 +69,7 @@ fun AppBottomBar(
 
 @Composable
 private fun BottomBarItem(
-    destination: AppDestination,
+    tab: BottomTab,
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -87,13 +87,13 @@ private fun BottomBarItem(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
-        DestinationIcon(
-            destination = destination,
+        TabIcon(
+            tab = tab,
             tint = color,
             modifier = Modifier.size(22.dp),
         )
         Text(
-            text = destination.label,
+            text = tab.label,
             style = MaterialTheme.typography.labelSmall.copy(
                 fontSize = 11.sp,
                 fontWeight = FontWeight.SemiBold,
@@ -105,15 +105,15 @@ private fun BottomBarItem(
 }
 
 @Composable
-private fun DestinationIcon(
-    destination: AppDestination,
+private fun TabIcon(
+    tab: BottomTab,
     tint: Color,
     modifier: Modifier = Modifier,
 ) {
     Canvas(modifier = modifier) {
         val stroke = Stroke(width = size.minDimension * 0.09f)
-        when (destination) {
-            AppDestination.Tonight -> {
+        when (tab) {
+            BottomTab.Tonight -> {
                 val r = size.minDimension * 0.42f
                 val center = Offset(size.width * 0.46f, size.height * 0.52f)
                 drawCircle(color = tint, radius = r, center = center)
@@ -123,7 +123,7 @@ private fun DestinationIcon(
                     center = Offset(center.x + r * 0.42f, center.y - r * 0.18f),
                 )
             }
-            AppDestination.Schedules -> {
+            BottomTab.Schedules -> {
                 val lineWidth = size.width * 0.62f
                 val startX = (size.width - lineWidth) / 2f
                 listOf(0.28f, 0.5f, 0.72f).forEach { yRatio ->
@@ -135,7 +135,7 @@ private fun DestinationIcon(
                     )
                 }
             }
-            AppDestination.Insights -> {
+            BottomTab.Insights -> {
                 val path = Path().apply {
                     moveTo(size.width * 0.5f, size.height * 0.12f)
                     lineTo(size.width * 0.88f, size.height * 0.5f)
@@ -145,7 +145,7 @@ private fun DestinationIcon(
                 }
                 drawPath(path = path, color = tint, style = stroke)
             }
-            AppDestination.Family -> {
+            BottomTab.Family -> {
                 val center = Offset(size.width / 2f, size.height / 2f)
                 drawCircle(
                     color = tint,

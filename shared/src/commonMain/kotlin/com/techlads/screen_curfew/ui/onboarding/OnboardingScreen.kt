@@ -39,8 +39,6 @@ fun OnboardingScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .safeContentPadding()
-            .padding(horizontal = 24.dp)
-            .padding(top = 8.dp, bottom = 28.dp),
     ) {
         Column(
             modifier = Modifier
@@ -74,7 +72,7 @@ fun OnboardingScreen(
                 modifier = Modifier.padding(horizontal = 8.dp),
             )
             Spacer(modifier = Modifier.height(28.dp))
-            PlatformCapabilityCard()
+            //PlatformCapabilityCard()
             Spacer(modifier = Modifier.height(24.dp))
         }
 
