@@ -29,6 +29,7 @@ import com.techlads.screen_curfew.ui.home.HomeScreen
 import com.techlads.screen_curfew.ui.onboarding.OnboardingScreen
 import com.techlads.screen_curfew.ui.override.PauseLockScreen
 import com.techlads.screen_curfew.ui.schedules.SchedulesScreen
+import com.techlads.screen_curfew.ui.schedules.create_schedule.CreateScheduleScreen
 import com.techlads.screen_curfew.ui.theme.ScreenCurfewTheme
 
 @Composable
@@ -110,9 +111,8 @@ fun ScreenCurfewNavHost(
 
                 composable<CreateScheduleRoute> {
                     TabContent {
-                        PlaceholderTab(
-                            title = "New schedule",
-                            body = "When should the phone rest? Schedule creation comes next.",
+                        CreateScheduleScreen(
+                            onSave = { navController.popBackStack() },
                         )
                     }
                 }

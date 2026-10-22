@@ -20,9 +20,11 @@ fun PrimaryButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
 ) {
     Button(
         onClick = onClick,
+        enabled = enabled,
         modifier = modifier
             .fillMaxWidth()
             .height(52.dp),
@@ -30,6 +32,8 @@ fun PrimaryButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = ScreenCurfewTheme.colors.moon,
             contentColor = ScreenCurfewTheme.colors.ink,
+            disabledContainerColor = ScreenCurfewTheme.colors.elevated,
+            disabledContentColor = ScreenCurfewTheme.colors.muted,
         ),
         contentPadding = PaddingValues(horizontal = 24.dp),
     ) {
